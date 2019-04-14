@@ -1,0 +1,20 @@
+#pragma once
+#ifndef  _Stack_H
+#define _Stack_H
+#define sca_num 16
+typedef struct Stack {
+	char num;
+	struct Stack *pre;
+}stack_node;
+typedef struct head
+{
+	stack_node *top;
+	int lenth;
+}stack;
+stack *sta_init(void);
+int sta_empty(stack p);
+int scale_change(int Dec_num);
+int push(stack *p, char num);
+int pop(stack *p, char *num);
+void tra_stack(stack h);
+#endif // ! _Stack_H

@@ -1,0 +1,80 @@
+#include <stdio.h>
+#include "Stack.h"
+#include <stdlib.h>
+stack *sta_init(void)
+{
+	stack *p = (stack*)malloc(sizeof(stack));
+	p->lenth = 0;
+	p->top = NULL;
+	return p;
+}
+int sta_empty(stack p)
+{
+	if (p.top = NULL)
+		return -1;
+	return p.lenth == 0;
+}
+
+int push(stack *p, char num)
+{
+	stack_node *k;
+	k = (stack_node*)malloc(sizeof(stack_node));
+	if (!k)
+		return 0;
+	k->num = num;
+	k->pre = p->top;
+	p->lenth++;
+	p->top = k;
+	return 1;
+}
+int pop(stack *p, char *num)
+{
+	if (p->top == NULL)
+	{
+		return -1;
+	}
+	(*num) = p->top->num;
+	p->top = p->top->pre;
+	free(p->top->pre);
+	p->lenth--;
+	return 1;
+}
+int scale_change(int Dec_num)
+{
+	int i, temp;
+	char j;
+	stack *h = sta_init();
+	temp = Dec_num;
+	while (1)
+	{
+		
+			if (temp % sca_num > 9)
+			{
+				j = 97 + (temp % sca_num-10);
+			}
+			else
+			{
+				j = 48 + temp % sca_num;
+			}
+			push(h, j);
+			temp /= sca_num;
+			if (temp==0)
+			{
+				break;
+			}
+		
+	}
+	tra_stack(*h);
+	return 1;
+}
+void tra_stack(stack h)
+{
+	int i;
+	stack_node *temp = NULL;
+	temp = h.top;
+	while (temp!=NULL)
+	{
+		printf("%c", temp->num);
+		temp = temp->pre;
+	}
+}
